@@ -1,0 +1,21 @@
+package model
+
+const (
+	T1_MAX_DEBIT_AMT        = 300000   //3K
+	T1_MAX_CREDIT_AMT       = 2000000  //20K
+	T1_MAX_ACCT_BAL         = 20000000 //200k
+	T1_MAX_DAILY_CUM_DR_AMT = 3000000  //30k
+
+	T2_MAX_DEBIT_AMT        = 1000000   //10K
+	T2_MAX_CREDIT_AMT       = 5000000   //50K
+	T2_MAX_ACCT_BAL         = 100000000 //1M
+	T2_MAX_DAILY_CUM_DR_AMT = 10000000  //100k
+
+	T3_MAX_DEBIT_AMT        = 500000000 //1M
+	T3_MAX_DAILY_CUM_DR_AMT = 500000000 //5M
+)
+
+type Kyc struct {
+	ID   int
+	Name string
+}

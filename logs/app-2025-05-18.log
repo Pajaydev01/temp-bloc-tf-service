@@ -1,0 +1,29 @@
+2025/05/18 19:15:41 intialize.go:47: Logger initialized!
+2025/05/18 19:19:15 intialize.go:47: Logger initialized!
+2025/05/18 19:19:33 intialize.go:47: Logger initialized!
+2025/05/18 19:20:30 intialize.go:47: Logger initialized!
+2025/05/18 19:20:35 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/18 19:20:35 httphelper.go:42: Request body: {"client_id":"","client_secret":"","grant_type":"client_credentials","scope":"/.default"}
+2025/05/18 19:20:36 httphelper.go:42: Request body: {"accountNumber":"0077705137","channelCode":"1","destinationInstitutionCode":"000014","transactionId":"250518192036347665939597"}
+2025/05/18 19:20:37 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/18 19:22:16 intialize.go:47: Logger initialized!
+2025/05/18 19:23:33 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/18 19:23:33 httphelper.go:42: Request body: {"client_id":"","client_secret":"","grant_type":"client_credentials","scope":"/.default"}
+2025/05/18 19:23:34 httphelper.go:42: Request body: {"accountNumber":"0077705137","channelCode":"1","destinationInstitutionCode":"000014","transactionId":"250518192334740896641594"}
+2025/05/18 19:23:34 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/18 19:25:05 intialize.go:47: Logger initialized!
+2025/05/18 19:25:09 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/18 19:25:09 httphelper.go:35: GET request with query params: {"client_id":"","client_secret":"","grant_type":"client_credentials","scope":"/.default"}
+2025/05/18 19:25:09 httphelper.go:42: Request body: {"client_id":"","client_secret":"","grant_type":"client_credentials","scope":"/.default"}
+2025/05/18 19:25:10 httphelper.go:42: Request body: {"accountNumber":"0077705137","channelCode":"1","destinationInstitutionCode":"000014","transactionId":"250518192510972125472652"}
+2025/05/18 19:25:10 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/18 19:26:50 intialize.go:47: Logger initialized!
+2025/05/18 19:27:00 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/18 19:27:00 httphelper.go:35: GET request with query params: {"client_id":"","client_secret":"","grant_type":"client_credentials","scope":"/.default"}
+2025/05/18 19:27:01 httphelper.go:42: Request body: {"accountNumber":"0077705137","channelCode":"1","destinationInstitutionCode":"000014","transactionId":"250518192701649186142647"}
+2025/05/18 19:27:01 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/18 19:28:08 intialize.go:47: Logger initialized!
+2025/05/18 19:28:13 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/18 19:28:13 httphelper.go:35: GET request with query params: {"client_id":"","client_secret":"","grant_type":"client_credentials","scope":"/.default"}
+2025/05/18 19:28:14 httphelper.go:42: Request body: {"accountNumber":"0077705137","channelCode":"1","destinationInstitutionCode":"000014","transactionId":"250518192814754885971806"}
+2025/05/18 19:28:14 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
