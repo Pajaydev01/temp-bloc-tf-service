@@ -8,8 +8,10 @@ import (
 	"net/http"
 )
 
-func MakeRequest(url string, method string, body interface{}, headers interface{}) (*http.Response, error) {
+func MakeRequest(url string, method string, body any, headers interface{}) (*http.Response, error) {
 	client := &http.Client{}
+	log.Println("Making request to URL:", url)
+	log.Println("Request method:", method)
 	req, err := http.NewRequest(method, url, nil)
 	if err != nil {
 		return nil, err
@@ -25,16 +27,14 @@ func MakeRequest(url string, method string, body interface{}, headers interface{
 	}
 	//body
 	if body != nil {
-		if method == "GET" {
-			// Convert the body to a query string and append it to the URL
-			queryParams, err := json.Marshal(body)
-			if err != nil {
-				return nil, err
-			}
-			req.URL.RawQuery = string(queryParams)
-			log.Println("GET request with query params:", string(queryParams))
-
-		} else {
+		switch b := body.(type) {
+		case string:
+			req.Body = io.NopCloser(bytes.NewBufferString(b))
+		case *bytes.Buffer:
+			req.Body = io.NopCloser(b)
+		case io.Reader:
+			req.Body = io.NopCloser(b)
+		default:
 			jsonBody, err := json.Marshal(body)
 			if err != nil {
 				return nil, err
@@ -44,6 +44,7 @@ func MakeRequest(url string, method string, body interface{}, headers interface{
 		}
 	}
 	resp, err := client.Do(req)
+	log.Println("Response status:", resp.Status)
 	if err != nil {
 		return nil, err
 	}

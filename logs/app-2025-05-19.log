@@ -1,0 +1,96 @@
+2025/05/19 09:36:14 intialize.go:47: Logger initialized!
+2025/05/19 09:40:44 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/19 09:40:44 httphelper.go:35: GET request with query params: {"client_id":"","client_secret":"","grant_type":"client_credentials","scope":"/.default"}
+2025/05/19 09:40:50 httphelper.go:42: Request body: {"accountNumber":"0077705137","channelCode":"1","destinationInstitutionCode":"0000014","transactionId":"250519094050972846499737"}
+2025/05/19 09:40:50 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/19 10:05:19 intialize.go:47: Logger initialized!
+2025/05/19 10:05:38 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/19 10:05:38 httphelper.go:28: Request body type: *strings.Reader
+2025/05/19 10:05:40 httphelper.go:28: Request body type: map[string]string
+2025/05/19 10:05:40 httphelper.go:41: Request body: {"accountNumber":"0077705137","channelCode":"1","destinationInstitutionCode":"0000014","transactionId":"250519100540040730340901"}
+2025/05/19 10:05:41 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/19 10:14:51 intialize.go:47: Logger initialized!
+2025/05/19 10:14:55 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/19 10:14:55 httphelper.go:13: Making request to URL: https://api.easypay.co.tz/v1//reset
+2025/05/19 10:14:55 httphelper.go:14: Request method: GET
+2025/05/19 10:14:56 httphelper.go:13: Making request to URL: https://api.easypay.co.tz/v1//nipservice/v1/nip/nameenquiry
+2025/05/19 10:14:56 httphelper.go:14: Request method: POST
+2025/05/19 10:14:56 httphelper.go:42: Request body: {"accountNumber":"0077705137","channelCode":"1","destinationInstitutionCode":"0000014","transactionId":"250519101456481719248657"}
+2025/05/19 10:14:57 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/19 10:16:34 intialize.go:47: Logger initialized!
+2025/05/19 10:18:56 intialize.go:47: Logger initialized!
+2025/05/19 10:19:00 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/19 10:19:00 httphelper.go:13: Making request to URL: https://api.easypay.co.tz/v1/reset?client_id=&scope=/.default&client_secret=&grant_type=client_credentials
+2025/05/19 10:19:00 httphelper.go:14: Request method: GET
+2025/05/19 10:19:00 httphelper.go:13: Making request to URL: https://api.easypay.co.tz/v1/nipservice/v1/nip/nameenquiry
+2025/05/19 10:19:00 httphelper.go:14: Request method: POST
+2025/05/19 10:19:00 httphelper.go:42: Request body: {"accountNumber":"0077705137","channelCode":"1","destinationInstitutionCode":"0000014","transactionId":"250519101900213992752919"}
+2025/05/19 10:19:01 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/19 10:20:14 intialize.go:47: Logger initialized!
+2025/05/19 10:20:19 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/19 10:20:19 httphelper.go:13: Making request to URL: https://api.easypay.co.tz/v1/reset?client_id=&scope=/.default&client_secret=&grant_type=client_credentials
+2025/05/19 10:20:19 httphelper.go:14: Request method: GET
+2025/05/19 10:20:20 httphelper.go:47: Response status: 404 Not Found
+2025/05/19 10:20:20 httphelper.go:13: Making request to URL: https://api.easypay.co.tz/v1/nipservice/v1/nip/nameenquiry
+2025/05/19 10:20:20 httphelper.go:14: Request method: POST
+2025/05/19 10:20:20 httphelper.go:42: Request body: {"accountNumber":"0077705137","channelCode":"1","destinationInstitutionCode":"0000014","transactionId":"250519102020144401520874"}
+2025/05/19 10:20:20 httphelper.go:47: Response status: 404 Not Found
+2025/05/19 10:20:20 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/19 10:21:11 intialize.go:47: Logger initialized!
+2025/05/19 10:21:15 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/19 10:21:15 httphelper.go:13: Making request to URL: https://api.easypay.co.tz/v1/reset?client_id=&scope=/.default&client_secret=&grant_type=client_credentials
+2025/05/19 10:21:15 httphelper.go:14: Request method: GET
+2025/05/19 10:21:20 httphelper.go:47: Response status: 404 Not Found
+2025/05/19 10:21:20 easypay.go:97: Error getting EasyPay token: failed to authenticate: 404 Not Found
+2025/05/19 10:21:20 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/19 10:41:42 intialize.go:47: Logger initialized!
+2025/05/19 10:42:15 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/19 10:42:15 httphelper.go:13: Making request to URL: https://httpbin.org/get/reset
+2025/05/19 10:42:15 httphelper.go:14: Request method: GET
+2025/05/19 10:42:16 httphelper.go:47: Response status: 404 Not Found
+2025/05/19 10:42:16 easypay.go:97: Error getting EasyPay token: failed to authenticate: 404 Not Found
+2025/05/19 10:42:16 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/19 10:45:46 intialize.go:47: Logger initialized!
+2025/05/19 10:46:06 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/19 10:46:06 httphelper.go:13: Making request to URL: https://catfact.ninja/factreset
+2025/05/19 10:46:06 httphelper.go:14: Request method: GET
+2025/05/19 10:46:08 httphelper.go:47: Response status: 404 Not Found
+2025/05/19 10:46:08 easypay.go:97: Error getting EasyPay token: failed to authenticate: 404 Not Found
+2025/05/19 10:46:08 transfers_usecase.go:263: Error making request to EasyPay: failed to authenticate: 404 Not Found
+2025/05/19 10:47:04 intialize.go:47: Logger initialized!
+2025/05/19 10:47:07 easypay.go:46: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/19 10:47:07 httphelper.go:13: Making request to URL: https://catfact.ninja/fact
+2025/05/19 10:47:07 httphelper.go:14: Request method: GET
+2025/05/19 10:47:07 httphelper.go:47: Response status: 200 OK
+2025/05/19 10:47:07 easypay.go:84: Response from EasyPay: {"fact":"A group of cats is called a clowder.","length":36}
+2025/05/19 11:22:03 intialize.go:47: Logger initialized!
+2025/05/19 11:26:49 intialize.go:47: Logger initialized!
+2025/05/19 11:32:55 intialize.go:48: Logger initialized!
+2025/05/19 12:33:10 intialize.go:48: Logger initialized!
+2025/05/19 12:36:18 intialize.go:48: Logger initialized!
+2025/05/19 12:37:04 transfers_usecase.go:32: Redis error!!!!! or no name enquiry for this particular transfer redis: nil
+2025/05/19 12:38:40 intialize.go:48: Logger initialized!
+2025/05/19 12:38:43 transfers_usecase.go:32: Redis error!!!!! or no name enquiry for this particular transfer redis: nil
+2025/05/19 12:39:20 transfers_usecase.go:35: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682b184bcbfd5044746d0561","channelCode":2,"destinationInstitutionCode":"0000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/19 12:42:36 intialize.go:48: Logger initialized!
+2025/05/19 12:42:41 transfers_usecase.go:35: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682b184bcbfd5044746d0561","channelCode":2,"destinationInstitutionCode":"0000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/19 12:42:41 transfers_usecase.go:68: ====== Debiting main transfer and calling nibbs ========== 1200
+2025/05/19 12:42:50 transfers_usecase.go:35: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682b184bcbfd5044746d0561","channelCode":2,"destinationInstitutionCode":"0000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/19 12:42:50 transfers_usecase.go:68: ====== Debiting main transfer and calling nibbs ========== 1200
+2025/05/19 12:42:56 transfers_usecase.go:35: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682b184bcbfd5044746d0561","channelCode":2,"destinationInstitutionCode":"0000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/19 12:42:56 transfers_usecase.go:68: ====== Debiting main transfer and calling nibbs ========== 1200
+2025/05/19 12:45:53 transfers_usecase.go:35: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682b184bcbfd5044746d0561","channelCode":2,"destinationInstitutionCode":"0000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/19 12:46:11 intialize.go:48: Logger initialized!
+2025/05/19 12:46:13 transfers_usecase.go:35: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682b184bcbfd5044746d0561","channelCode":2,"destinationInstitutionCode":"0000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/19 12:46:13 transfers_usecase.go:68: ====== Debiting main transfer and calling nibbs ========== 1200
+2025/05/19 12:47:32 intialize.go:48: Logger initialized!
+2025/05/19 12:47:55 intialize.go:48: Logger initialized!
+2025/05/19 12:48:42 intialize.go:48: Logger initialized!
+2025/05/19 12:49:54 intialize.go:48: Logger initialized!
+2025/05/19 12:50:18 transfers_usecase.go:32: Redis error!!!!! or no name enquiry for this particular transfer redis: nil
+2025/05/19 12:50:44 transfers_usecase.go:35: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682b1b016386b16438412e2b","channelCode":2,"destinationInstitutionCode":"0000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/19 12:50:44 transfers_usecase.go:68: ====== Debiting main transfer and calling nibbs ========== 1200
+2025/05/19 12:50:48 transfers_usecase.go:35: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682b1b016386b16438412e2b","channelCode":2,"destinationInstitutionCode":"0000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/19 12:50:59 transfers_usecase.go:35: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682b1b016386b16438412e2b","channelCode":2,"destinationInstitutionCode":"0000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/19 12:50:59 transfers_usecase.go:68: ====== Debiting main transfer and calling nibbs ========== 1200
+2025/05/19 12:51:02 transfers_usecase.go:35: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682b1b016386b16438412e2b","channelCode":2,"destinationInstitutionCode":"0000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}

@@ -22,7 +22,7 @@ type TransferRequest struct {
 	Type            string `json:"-"`
 	ApprovalID      uint   `json:"-" bson:"approval_id"`
 	RefId           string `json:"ref_id,omitempty"`
-	CustomerId      uint
+	//CustomerId      uint
 }
 
 type NameEnquiryRequest struct {

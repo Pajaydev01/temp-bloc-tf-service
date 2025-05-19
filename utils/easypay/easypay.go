@@ -47,19 +47,20 @@ func EasypayAuth(useCache bool) (string, error) {
 	}
 
 	// If not cached or expired, make a new request to get the token
-	url := fmt.Sprintf("%s/reset", os.Getenv("EASYPAY_BASE_URL"))
+	url := fmt.Sprintf("%sreset", os.Getenv("EASYPAY_BASE_URL"))
 
 	headers := map[string]string{
 		"Content-Type": "application/json",
 	}
-	payload := map[string]string{
-		"client_id":     os.Getenv("EASY_PAY_CLIENT_ID"),
-		"scope":         fmt.Sprintf("%s/.default", os.Getenv("EASY_PAY_CLIENT_ID")),
-		"client_secret": os.Getenv("EASY_PAY_CLIENT_SECRET"),
-		"grant_type":    "client_credentials",
-	}
+	// payload := map[string]string{
+	// 	"client_id":     os.Getenv("EASY_PAY_CLIENT_ID"),
+	// 	"scope":         fmt.Sprintf("%s/.default", os.Getenv("EASY_PAY_CLIENT_ID")),
+	// 	"client_secret": os.Getenv("EASY_PAY_CLIENT_SECRET"),
+	// 	"grant_type":    "client_credentials",
+	// }
+	payload := fmt.Sprintf("client_id=%s&scope=%s/.default&client_secret=%s&grant_type=client_credentials", os.Getenv("EASY_PAY_CLIENT_ID"), os.Getenv("EASY_PAY_CLIENT_ID"), os.Getenv("EASY_PAY_CLIENT_SECRET"))
 
-	response, err := helper.MakeRequest(url, "GET", payload, headers)
+	response, err := helper.MakeRequest(url+"?"+payload, "GET", payload, headers)
 	if err != nil {
 		log.Println("Error making generating token:", err)
 		return "", err
@@ -92,7 +93,11 @@ func EasypayAuth(useCache bool) (string, error) {
 
 func EasyPayNameEnquiry(accountNumber, bankCode string) (transferModel.NESingleResponseEasyPay, error) {
 	token, err := EasypayAuth(true)
-	url := fmt.Sprintf("%s/nipservice/v1/nip/nameenquiry", os.Getenv("EASYPAY_BASE_URL"))
+	if err != nil {
+		log.Println("Error getting EasyPay token:", err)
+		return transferModel.NESingleResponseEasyPay{}, err
+	}
+	url := fmt.Sprintf("%snipservice/v1/nip/nameenquiry", os.Getenv("EASYPAY_BASE_URL"))
 	headers := map[string]string{
 		"Content-Type":  "application/json",
 		"Authorization": fmt.Sprintf("Bearer %s", token),

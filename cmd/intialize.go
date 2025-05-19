@@ -7,6 +7,7 @@ import (
 
 	"net/http"
 
+	transactionInit "bloc-mfb/pkg/transactions/init"
 	transferInit "bloc-mfb/pkg/transfers/init"
 
 	"log"
@@ -71,6 +72,6 @@ func RegisterServices(router *mux.Router) {
 	//register services here
 	// accountInit.InitAccount(router)
 	// customerInit.InitCustomer(router)
-	// transactionInit.InitTransaction(router)
+	transactionInit.InitTransaction(router)
 	transferInit.InitTransfer(router)
 }
