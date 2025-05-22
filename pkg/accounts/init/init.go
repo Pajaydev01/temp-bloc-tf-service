@@ -1,8 +1,8 @@
 package accountInit
 
 import (
-	"bloc-mfb/pkg/accounts/api"
-	"bloc-mfb/pkg/accounts/model"
+	"github.com/bloc-transfer-service/pkg/accounts/api"
+	"github.com/bloc-transfer-service/pkg/accounts/model"
 
 	"github.com/gorilla/mux"
 )

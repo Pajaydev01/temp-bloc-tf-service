@@ -16,7 +16,7 @@ func MakeRequest(url string, method string, body any, headers interface{}) (*htt
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("Content-Type", "application/json")
+	//req.Header.Set("Content-Type", "application/json")
 	//headers
 	if headers != nil {
 		if headerMap, ok := headers.(map[string]string); ok {
@@ -25,6 +25,7 @@ func MakeRequest(url string, method string, body any, headers interface{}) (*htt
 			}
 		}
 	}
+	log.Println("Request headers:", req.Header)
 	//body
 	if body != nil {
 		switch b := body.(type) {
@@ -34,19 +35,22 @@ func MakeRequest(url string, method string, body any, headers interface{}) (*htt
 			req.Body = io.NopCloser(b)
 		case io.Reader:
 			req.Body = io.NopCloser(b)
+		// case *strings.Reader:
+		// 	req.Body = io.NopCloser(b)
 		default:
 			jsonBody, err := json.Marshal(body)
 			if err != nil {
 				return nil, err
 			}
-			log.Println("Request body:", string(jsonBody))
 			req.Body = io.NopCloser(bytes.NewBuffer(jsonBody))
 		}
+		log.Println("Request body:", req.Body)
 	}
 	resp, err := client.Do(req)
-	log.Println("Response status:", resp.Status)
+
 	if err != nil {
 		return nil, err
 	}
+	log.Println("Response status:", resp)
 	return resp, nil
 }

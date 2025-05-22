@@ -1,16 +1,18 @@
-// package usecase
+package usecase
 
-// import (
-// 	"bloc-mfb/config/database"
-// 	accountModel "bloc-mfb/pkg/accounts/model"
-// 	txnModel "bloc-mfb/pkg/transactions/model"
-// 	txnRepo "bloc-mfb/pkg/transactions/repository"
-// 	"bloc-mfb/utils/exception"
-// 	"log"
-// 	"time"
-// )
+import (
+	txnModel "github.com/bloc-transfer-service/pkg/transactions/model"
+	txnRepo "github.com/bloc-transfer-service/pkg/transactions/repository"
+)
 
 // // TransactionsUseCase handles business logic
+func GetTransactions(filters map[string]string) (txnModel.PaginatedResponse, error) {
+	transactions, error := txnRepo.GetTransactions(filters)
+	if error != nil {
+		return txnModel.PaginatedResponse{}, error
+	}
+	return transactions, nil
+}
 
 // // get the day transaction for an accoubt excluding fee and vat
 // func GetAccountDayTransactions(account accountModel.Accounts) ([]txnModel.Transactions, error) {
@@ -52,14 +54,6 @@
 // 		return txnModel.Transactions{}, exception.HandleDBError(update.Error)
 // 	}
 // 	return transaction, nil
-// }
-
-// func GetCustomerTransactionsById(customer_id uint, filters map[string]string) (txnModel.PaginatedResponse, error) {
-// 	transactions, error := txnRepo.GetCustomerTransactionsById(customer_id, filters)
-// 	if error != nil {
-// 		return txnModel.PaginatedResponse{}, error
-// 	}
-// 	return transactions, nil
 // }
 
 // func GetTransactionById(id uint) (txnModel.Transactions, error) {

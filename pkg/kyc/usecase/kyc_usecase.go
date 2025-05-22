@@ -1,12 +1,13 @@
 package usecase
 
 import (
-	accountModel "bloc-mfb/pkg/accounts/model"
-	customerModel "bloc-mfb/pkg/customer/model"
-	kycModel "bloc-mfb/pkg/kyc/model"
-	transactionUsecase "bloc-mfb/pkg/transactions/usecase"
 	"errors"
 	"log"
+
+	accountModel "github.com/bloc-transfer-service/pkg/accounts/model"
+	customerModel "github.com/bloc-transfer-service/pkg/customer/model"
+	kycModel "github.com/bloc-transfer-service/pkg/kyc/model"
+	transactionUsecase "github.com/bloc-transfer-service/pkg/transactions/usecase"
 )
 
 // KycUseCase handles business logic

@@ -1,11 +1,6 @@
 package usecase
 
 import (
-	"bloc-mfb/config/database"
-	txnModel "bloc-mfb/pkg/transactions/model"
-	transactionRepo "bloc-mfb/pkg/transactions/repository"
-	transferModel "bloc-mfb/pkg/transfers/model"
-	"bloc-mfb/utils/easypay"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -13,15 +8,15 @@ import (
 	"os"
 	"time"
 
+	"github.com/bloc-transfer-service/config/database"
+	txnModel "github.com/bloc-transfer-service/pkg/transactions/model"
+	transactionRepo "github.com/bloc-transfer-service/pkg/transactions/repository"
+	transferModel "github.com/bloc-transfer-service/pkg/transfers/model"
+	"github.com/bloc-transfer-service/utils/easypay"
+
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"gopkg.in/mgo.v2/bson"
 )
-
-// TransfersUseCase handles business logic
-func GetTransferFeeAndVat(transferItem transferModel.TransferRequest) (Fee int64, Vat int64) {
-	// cant write the logic now
-	return 5000, 100
-}
 
 func DoLocalTransfer(transferItem transferModel.TransferRequest) (txn txnModel.Transactions, err error) {
 	//pull the details from the ref id in the redis cache
@@ -51,23 +46,33 @@ func DoLocalTransfer(transferItem transferModel.TransferRequest) (txn txnModel.T
 	transaction.DRCR = "DR"
 	//transaction.Environment = os.Getenv("ENVIRONMENT")
 	//save transaction
-	_, err = transactionRepo.SaveTransaction(&transaction)
+	_, err = transactionRepo.SaveOrUpdateTransaction(&transaction)
 	if err != nil {
 		return txnModel.Transactions{}, err
 	}
-	txns, err := doMainDebitAndCallNibbs(transferItem, transaction)
+	_, err = doMainDebitAndCallNibbs(transferItem, nameEnquiryResponse, transaction)
 	if err != nil {
+		return txnModel.Transactions{}, err
+	}
+	//remove the redis cache
+	_, err = redisCon.Del(context.Background(), key).Result()
+	if err != nil {
+		log.Println("Redis error!!!!!", err)
 		return txnModel.Transactions{}, err
 	}
 	//call main provider to do main transfer
-	return txns, nil
+	return transaction, nil
 }
 
-func doMainDebitAndCallNibbs(txnItem transferModel.TransferRequest, transaction txnModel.Transactions) (txn txnModel.Transactions, error error) {
+func doMainDebitAndCallNibbs(txnItem transferModel.TransferRequest, beneficiary transferModel.NESingleResponseEasyPay, transation txnModel.Transactions) (transferModel.EASYPAYFtSingleResponse, error) {
 	// proceed to debit main amount
 	log.Println("====== Debiting main transfer and calling nibbs ==========", txnItem.Amount)
+	result, err := easypay.EasyPayTransfer(txnItem, beneficiary, transation)
+	if err != nil {
+		return transferModel.EASYPAYFtSingleResponse{}, err
+	}
 	//err,token
-	return transaction, nil
+	return result, nil
 }
 
 func DoNameEnquiry(nameEnquiryItem transferModel.NameEnquiryRequest) (bson.M, error) {
@@ -115,4 +120,13 @@ func DoNameEnquiry(nameEnquiryItem transferModel.NameEnquiryRequest) (bson.M, er
 
 	}
 	return bson.M{"account_number": "123678947", "account_name": "test user", "ref_id": key}, nil
+}
+
+func GetInstitution() ([]transferModel.NIPInstitutions, error) {
+	institutions, err := easypay.GeInstitutions()
+	if err != nil {
+		log.Println("Error making request to EasyPay:", err)
+		return nil, err
+	}
+	return institutions, nil
 }

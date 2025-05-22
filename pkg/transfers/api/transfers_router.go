@@ -6,5 +6,6 @@ func Router(router *mux.Router) {
 	baseRoute := router.PathPrefix("/v1/transfer").Subrouter()
 
 	baseRoute.HandleFunc("", Transfer).Methods("POST")
+	baseRoute.HandleFunc("/institutions", GetInstitutions).Methods("GET")
 	baseRoute.HandleFunc("/name-enquiry", NameEnquiry).Methods("POST")
 }

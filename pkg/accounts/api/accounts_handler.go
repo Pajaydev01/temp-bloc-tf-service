@@ -1,10 +1,11 @@
 package api
 
 import (
-	"bloc-mfb/pkg/accounts/model"
-	"bloc-mfb/pkg/accounts/usecase"
-	req "bloc-mfb/utils/http"
 	"net/http"
+
+	"github.com/bloc-transfer-service/pkg/accounts/model"
+	"github.com/bloc-transfer-service/pkg/accounts/usecase"
+	req "github.com/bloc-transfer-service/utils/http"
 )
 
 // AccountsHandler handles HTTP requests

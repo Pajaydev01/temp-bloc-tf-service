@@ -50,6 +50,67 @@ type NESingleResponseEasyPay struct {
 	Message                    string `json:"message"`
 }
 
+type EASYPAYFtSingleResponse struct {
+	ResponseCode                      string `json:"responseCode"`
+	SessionID                         string `json:"sessionID"`
+	TransactionId                     string `json:"transactionId"`
+	ChannelCode                       string `json:"channelCode"`
+	NameEnquiryRef                    string `json:"nameEnquiryRef"`
+	DestinationInstitutionCode        string `json:"destinationInstitutionCode"`
+	BeneficiaryAccountName            string `json:"beneficiaryAccountName"`
+	BeneficiaryAccountNumber          string `json:"beneficiaryAccountNumber"`
+	BeneficiaryKYCLevel               string `json:"beneficiaryKYCLevel"`
+	BeneficiaryBankVerificationNumber string `json:"beneficiaryBankVerificationNumber"`
+	OriginatorAccountName             string `json:"originatorAccountName"`
+	OriginatorAccountNumber           string `json:"originatorAccountNumber"`
+	OriginatorBankVerificationNumber  string `json:"originatorBankVerificationNumber"`
+	OriginatorKYCLevel                string `json:"originatorKYCLevel"`
+	TransactionLocation               string `json:"transactionLocation"`
+	Narration                         string `json:"narration"`
+	PaymentReference                  string `json:"paymentReference"`
+	Amount                            string `json:"amount"`
+}
+
+type TSQuerySingleResponse struct {
+	SourceInstitutionCode string `json:"sourceInstitutionCode"`
+	ChannelCode           string `json:"channelCode"`
+	SessionID             string `json:"sessionID"`
+	ResponseCode          string `json:"responseCode"`
+	TransactionId         string `json:"transactionId"`
+}
+
+type FTSingleCreditOutward struct {
+	Amount                            string `json:"amount"`
+	BeneficiaryAccountName            string `json:"beneficiaryAccountName"`
+	BeneficiaryAccountNumber          string `json:"beneficiaryAccountNumber"`
+	BeneficiaryBankVerificationNumber string `json:"beneficiaryBankVerificationNumber"`
+	BeneficiaryKYCLevel               string `json:"beneficiaryKYCLevel"`
+	ChannelCode                       string `json:"channelCode"`
+	OriginatorAccountName             string `json:"originatorAccountName"`
+	OriginatorAccountNumber           string `json:"originatorAccountNumber"`
+	OriginatorKYCLevel                string `json:"originatorKYCLevel"`
+	MandateReferenceNumber            string `json:"mandateReferenceNumber"`
+	PaymentReference                  string `json:"paymentReference"`
+	TransactionLocation               string `json:"transactionLocation"`
+	OriginatorNarration               string `json:"originatorNarration"`
+	BeneficiaryNarration              string `json:"beneficiaryNarration"`
+	BillerId                          string `json:"billerId"`
+	DestinationInstitutionCode        string `json:"destinationInstitutionCode"`
+	SourceInstitutionCode             string `json:"sourceInstitutionCode"`
+	TransactionId                     string `json:"transactionId"`
+	OriginatorBankVerificationNumber  string `json:"originatorBankVerificationNumber"`
+	NameEnquiryRef                    string `json:"nameEnquiryRef"`
+	InitiatorAccountName              string `json:"InitiatorAccountName"`
+	InitiatorAccountNumber            string `json:"InitiatorAccountNumber"`
+}
+
+type NIPInstitutions struct {
+	InstitutionCode string `json:"institutionCode"`
+	InstitutionName string `json:"institutionName"`
+	Category        int    `json:"category"`
+	CategoryCode    string `json:"categoryCode"`
+}
+
 func (a NameEnquiryRequest) ValidateNameEnquiry() error {
 	return validation.ValidateStruct(&a,
 		validation.Field(&a.AccountNumber, validation.Required),

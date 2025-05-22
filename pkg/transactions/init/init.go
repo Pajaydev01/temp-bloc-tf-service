@@ -1,8 +1,8 @@
 package init
 
 import (
-	"bloc-mfb/pkg/transactions/api"
-	"bloc-mfb/pkg/transactions/model"
+	"github.com/bloc-transfer-service/pkg/transactions/api"
+	"github.com/bloc-transfer-service/pkg/transactions/model"
 
 	"github.com/gorilla/mux"
 )

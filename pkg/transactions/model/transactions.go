@@ -1,9 +1,10 @@
 package model
 
 import (
-	"bloc-mfb/config/database"
-	"bloc-mfb/utils/exception"
 	"time"
+
+	"github.com/bloc-transfer-service/config/database"
+	"github.com/bloc-transfer-service/utils/exception"
 )
 
 type transaction_status string
@@ -66,6 +67,9 @@ type MetaData struct {
 	//fee and others
 	FeeTransactionId uint `json:"fee_transaction_id,omitempty"`
 	VatTransactionId uint `json:"vat_transaction_id,omitempty"`
+
+	NibbsResponsecode string `json:"nibbs_response_code,omitempty"`
+	SessionId         string `gorm:"not null;uniqueIndex" json:"session_id"`
 }
 
 type FeeVatChargeResp struct {
@@ -94,6 +98,10 @@ func Init() {
 	//database.GetDB().Migrator().CreateIndex(&Transactions{}, "Reference")
 
 	database.GetDB().Migrator().AlterColumn(&Transactions{}, "Reference")
+	database.GetDB().Migrator().AlterColumn(&Transactions{}, "MetaData")
+	// if err != nil {
+	// 	panic("Failed to alter column: " + err.Error())
+	// }
 }
 
 func (t *Transactions) UpdateTransactionMeta() (*Transactions, error) {

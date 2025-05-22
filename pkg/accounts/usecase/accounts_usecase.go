@@ -1,14 +1,15 @@
 package usecase
 
 import (
-	"bloc-mfb/config/database"
-	"bloc-mfb/pkg/accounts/model"
-	customerUseCase "bloc-mfb/pkg/customer/usecase"
-	KycUseCase "bloc-mfb/pkg/kyc/usecase"
-	crypt "bloc-mfb/utils/encryption"
-	"bloc-mfb/utils/exception"
 	"errors"
 	"log"
+
+	"github.com/bloc-transfer-service/config/database"
+	"github.com/bloc-transfer-service/pkg/accounts/model"
+	customerUseCase "github.com/bloc-transfer-service/pkg/customer/usecase"
+	KycUseCase "github.com/bloc-transfer-service/pkg/kyc/usecase"
+	crypt "github.com/bloc-transfer-service/utils/encryption"
+	"github.com/bloc-transfer-service/utils/exception"
 
 	"gorm.io/gorm/clause"
 )

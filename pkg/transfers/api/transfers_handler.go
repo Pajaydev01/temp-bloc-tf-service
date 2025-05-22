@@ -1,11 +1,12 @@
 package api
 
 import (
-	transferModel "bloc-mfb/pkg/transfers/model"
-	"bloc-mfb/pkg/transfers/usecase"
-	req "bloc-mfb/utils/http"
 	"encoding/json"
 	"net/http"
+
+	transferModel "github.com/bloc-transfer-service/pkg/transfers/model"
+	"github.com/bloc-transfer-service/pkg/transfers/usecase"
+	req "github.com/bloc-transfer-service/utils/http"
 )
 
 // TransfersHandler handles HTTP requests
@@ -26,7 +27,7 @@ func Transfer(w http.ResponseWriter, r *http.Request) {
 
 	data := make(map[string]interface{})
 	data["Transaction"] = transaction
-	req.SendSuccessResponse(w, false, data, "Transfer successful", 201)
+	req.SendSuccessResponse(w, true, data, "Transfer initiated", 201)
 }
 
 func NameEnquiry(w http.ResponseWriter, r *http.Request) {
@@ -48,5 +49,14 @@ func NameEnquiry(w http.ResponseWriter, r *http.Request) {
 	accountBytes, _ := json.Marshal(account)
 	json.Unmarshal(accountBytes, &data)
 
-	req.SendSuccessResponse(w, false, data, "Name Enquiry successful", 201)
+	req.SendSuccessResponse(w, true, data, "Name Enquiry successful", 201)
+}
+
+func GetInstitutions(w http.ResponseWriter, r *http.Request) {
+	institutions, err := usecase.GetInstitution()
+	if err != nil {
+		req.SendSuccessResponse(w, false, nil, err.Error(), http.StatusBadRequest)
+		return
+	}
+	req.SendSuccessResponse(w, true, institutions, "Institutions fetched successfully", 200)
 }

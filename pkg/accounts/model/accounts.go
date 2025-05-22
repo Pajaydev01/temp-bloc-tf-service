@@ -1,16 +1,17 @@
 package model
 
 import (
-	"bloc-mfb/config/database"
-	customerModel "bloc-mfb/pkg/customer/model"
-	txnModel "bloc-mfb/pkg/transactions/model"
-	"bloc-mfb/utils/exception"
-	global "bloc-mfb/utils/state"
 	"database/sql"
 	"errors"
 	"fmt"
 	"log"
 	"time"
+
+	"github.com/bloc-transfer-service/config/database"
+	customerModel "github.com/bloc-transfer-service/pkg/customer/model"
+	txnModel "github.com/bloc-transfer-service/pkg/transactions/model"
+	"github.com/bloc-transfer-service/utils/exception"
+	global "github.com/bloc-transfer-service/utils/state"
 
 	validation "github.com/go-ozzo/ozzo-validation/v4"
 	"gorm.io/gorm"

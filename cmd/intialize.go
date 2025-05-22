@@ -1,14 +1,16 @@
 package cmd
 
 import (
-	"bloc-mfb/config/database"
-	"bloc-mfb/middleware"
+	"io"
 	"time"
+
+	"github.com/bloc-transfer-service/config/database"
+	"github.com/bloc-transfer-service/middleware"
 
 	"net/http"
 
-	transactionInit "bloc-mfb/pkg/transactions/init"
-	transferInit "bloc-mfb/pkg/transfers/init"
+	transactionInit "github.com/bloc-transfer-service/pkg/transactions/init"
+	transferInit "github.com/bloc-transfer-service/pkg/transfers/init"
 
 	"log"
 	"os"
@@ -16,8 +18,11 @@ import (
 	sentrynegroni "github.com/getsentry/sentry-go/negroni"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
+	"github.com/solarwinds/apm-go/swo"
 	"github.com/urfave/negroni"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+	"go.opentelemetry.io/otel/attribute"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	"gopkg.in/natefinch/lumberjack.v2"
 )
 
@@ -30,6 +35,8 @@ func Initialize() {
 	database.ConnectRedis()
 	//initialize logger
 	InitializeLogger()
+
+	//HandleOtel()
 }
 
 // initialize daily log rotation
@@ -42,8 +49,8 @@ func InitializeLogger() {
 		Compress:   true,
 	}
 	// Create a multi-writer (log to file & console)
-	_ = os.Stdout          // If you want logs on console too
-	log.SetOutput(logFile) // Log to file only
+	multiWriter := io.MultiWriter(os.Stdout, logFile)
+	log.SetOutput(multiWriter)
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 	log.Println("Logger initialized!")
 }
@@ -74,4 +81,19 @@ func RegisterServices(router *mux.Router) {
 	// customerInit.InitCustomer(router)
 	transactionInit.InitTransaction(router)
 	transferInit.InitTransfer(router)
+}
+
+func HandleOtel() {
+	// Initialize the SolarWinds APM library
+	cb, err := swo.Start(
+		// Optionally add service-level resource attributes
+		semconv.ServiceVersion("v0.0.1"),
+		attribute.String("environment", "testing"),
+	)
+	if err != nil {
+		// Handle error
+	}
+	// This function returned from 'Start()' will tell the apm library to
+	// shut down, often deferred until the end of 'main()'.
+	defer cb()
 }

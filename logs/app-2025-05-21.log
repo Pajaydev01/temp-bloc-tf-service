@@ -1,0 +1,34 @@
+2025/05/21 11:29:15 intialize.go:53: Logger initialized!
+2025/05/21 11:32:19 intialize.go:53: Logger initialized!
+2025/05/21 11:43:11 intialize.go:53: Logger initialized!
+2025/05/21 12:00:49 intialize.go:54: Logger initialized!
+2025/05/21 15:02:07 intialize.go:54: Logger initialized!
+2025/05/21 21:15:49 intialize.go:54: Logger initialized!
+2025/05/21 21:16:37 transfers_usecase.go:30: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682e348cad6d3fa9e036ceb6","channelCode":2,"destinationInstitutionCode":"000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/21 21:16:37 transfers_usecase.go:69: ====== Debiting main transfer and calling nibbs ========== 12000
+2025/05/21 21:16:37 easypay.go:171: ============ EasyPay transfer request initiated here ==========================
+2025/05/21 21:16:37 easypay.go:47: Checking for cached EasyPay token
+2025/05/21 21:16:37 easypay.go:53: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/21 21:16:37 easypay.go:57: Simulating EasyPay token generation in dev environment
+2025/05/21 21:16:37 easypay.go:177: EasyPay token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+2025/05/21 21:16:37 easypay.go:204: Payload for EasyPay transfer: map[amount:120.00 beneficiaryAccountName:test user beneficiaryAccountNumber:0077705137 beneficiaryBankVerificationNumber:210982389230 beneficiaryKYCLevel:1 beneficiaryNarration: channelCode:1 destinationInstitutionCode: nameEnquiryRef: originatorAccountName:Bloc-Johnson Aniyi originatorAccountNumber:5403508663 originatorBankVerificationNumber:33333333333 originatorKYCLevel:3 originatorNarration: paymentReference:000023250521211637759723211850 transactionId:000023250521211637759723211850 transactionLocation:1.39716,3.07117]
+2025/05/21 21:18:02 intialize.go:54: Logger initialized!
+2025/05/21 21:19:39 transfers_usecase.go:30: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682e35433581441fbb89c81d","channelCode":2,"destinationInstitutionCode":"000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/21 21:19:39 transfers_usecase.go:69: ====== Debiting main transfer and calling nibbs ========== 12000
+2025/05/21 21:19:39 easypay.go:171: ============ EasyPay transfer request initiated here ==========================
+2025/05/21 21:19:39 easypay.go:47: Checking for cached EasyPay token
+2025/05/21 21:19:39 easypay.go:177: EasyPay token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+2025/05/21 21:19:39 easypay.go:204: Payload for EasyPay transfer: map[amount:120.00 beneficiaryAccountName:test user beneficiaryAccountNumber:0077705137 beneficiaryBankVerificationNumber:210982389230 beneficiaryKYCLevel:1 beneficiaryNarration: channelCode:1 destinationInstitutionCode: nameEnquiryRef: originatorAccountName:Bloc-Johnson Aniyi originatorAccountNumber:5403508663 originatorBankVerificationNumber:33333333333 originatorKYCLevel:3 originatorNarration: paymentReference:000023250521211939444367721561 transactionId:000023250521211939444367721561 transactionLocation:1.39716,3.07117]
+2025/05/21 21:19:39 Queuehandler.go:25: ............enqueuing Task now....... processTransfer
+2025/05/21 21:20:32 easypay.go:288: Processing task: 0xe6ef20
+2025/05/21 21:21:53 intialize.go:54: Logger initialized!
+2025/05/21 21:48:46 intialize.go:54: Logger initialized!
+2025/05/21 21:49:19 transfers_usecase.go:30: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"sess_682e3c3f8b4aeec0f911d623","channelCode":2,"destinationInstitutionCode":"000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/21 21:49:19 transfers_usecase.go:69: ====== Debiting main transfer and calling nibbs ========== 12000
+2025/05/21 21:49:19 easypay.go:171: ============ EasyPay transfer request initiated here ==========================
+2025/05/21 21:49:19 easypay.go:47: Checking for cached EasyPay token
+2025/05/21 21:49:19 easypay.go:177: EasyPay token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+2025/05/21 21:49:19 easypay.go:204: Payload for EasyPay transfer: map[amount:120.00 beneficiaryAccountName:test user beneficiaryAccountNumber:0077705137 beneficiaryBankVerificationNumber:210982389230 beneficiaryKYCLevel:1 beneficiaryNarration: channelCode:1 destinationInstitutionCode: nameEnquiryRef: originatorAccountName:Bloc-Johnson Aniyi originatorAccountNumber:5403508663 originatorBankVerificationNumber:33333333333 originatorKYCLevel:3 originatorNarration: paymentReference:000023250521214919271877424457 transactionId:000023250521214919271877424457 transactionLocation:1.39716,3.07117]
+2025/05/21 21:49:19 Queuehandler.go:25: ............enqueuing Task now....... processTransfer
+2025/05/21 21:49:40 transfers_usecase.go:27: Redis error!!!!! or no name enquiry for this particular transfer redis: nil
+2025/05/21 21:50:11 easypay.go:288: ================= Queue processor now Processing task:============ 
