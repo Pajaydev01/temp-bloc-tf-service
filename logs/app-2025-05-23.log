@@ -1,0 +1,57 @@
+2025/05/23 10:17:08 intialize.go:55: Logger initialized!
+2025/05/23 10:17:09 main.go:39: Error creating listener:listen tcp :4100: bind: address already in use
+2025/05/23 10:17:58 intialize.go:55: Logger initialized!
+2025/05/23 10:19:38 intialize.go:55: Logger initialized!
+2025/05/23 10:20:42 intialize.go:55: Logger initialized!
+2025/05/23 10:23:10 intialize.go:55: Logger initialized!
+2025/05/23 10:23:32 easypay.go:112: ============ EasyPay name enquiry request initiated here ==========================
+2025/05/23 10:23:32 easypay.go:49: Checking for cached EasyPay token
+2025/05/23 10:23:32 easypay.go:55: Token not found in cache, or cache expired, making call for another redis: nil
+2025/05/23 10:23:32 easypay.go:59: Simulating EasyPay token generation in dev environment
+2025/05/23 10:23:32 httphelper.go:13: Making request to URL: https://api.restful-api.dev/objects
+2025/05/23 10:23:32 httphelper.go:14: Request method: POST
+2025/05/23 10:23:32 httphelper.go:28: Request headers: map[Authorization:[Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c] Content-Type:[application/json]]
+2025/05/23 10:23:32 httphelper.go:47: Request body: {{"data":{"CPU model":"Intel Core i9","Hard disk size":"1 TB","price":1849.99,"year":2019},"name":"Apple MacBook Pro 16"}}
+2025/05/23 10:23:35 httphelper.go:54: Response status: &{200 OK 200 HTTP/2.0 2 0 map[Alt-Svc:[h3=":443"; ma=86400] Cf-Cache-Status:[DYNAMIC] Cf-Ray:[94437ee2bd31e904-LHR] Content-Type:[application/json] Date:[Fri, 23 May 2025 09:23:38 GMT] Nel:[{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}] Report-To:[{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=9uGlUlw7869ZEoW2b5Wn76XuH8bHdidTlIImYhAPbjj%2BELcW9gZSlpfeM9RjFvBFJptdIHqCgkFFoGVPO351nQJBwV3l0HrfhJq%2Bk9%2FUkOLcD7s%3D"}]}] Server:[cloudflare] Vary:[Origin Access-Control-Request-Method Access-Control-Request-Headers]] 0xc000313b90 -1 [] false true map[] 0xc0001fc000 0xc00062c0c0}
+2025/05/23 10:23:35 easypay.go:178: Response from EasyPay: {"id":"ff80818196f2a23f0196fc748a2719d3","name":"Apple MacBook Pro 16","createdAt":"2025-05-23T09:23:38.151+00:00","data":{"CPU model":"Intel Core i9","Hard disk size":"1 TB","price":1849.99,"year":2019}}
+2025/05/23 10:23:35 transfers_usecase.go:89: Error making request to EasyPay: 
+2025/05/23 10:25:38 intialize.go:55: Logger initialized!
+2025/05/23 10:25:41 easypay.go:112: ============ EasyPay name enquiry request initiated here ==========================
+2025/05/23 10:25:41 easypay.go:49: Checking for cached EasyPay token
+2025/05/23 10:25:41 transfers_usecase.go:92: Response from EasyPay: {00  000023250523102541334128581983 1 000014 0077705137 test user 210982389230 1 Success}
+2025/05/23 10:27:37 intialize.go:55: Logger initialized!
+2025/05/23 10:27:40 easypay.go:112: ============ EasyPay name enquiry request initiated here ==========================
+2025/05/23 10:27:40 easypay.go:49: Checking for cached EasyPay token
+2025/05/23 10:27:40 httphelper.go:13: Making request to URL: https://api.restful-api.dev/objects
+2025/05/23 10:27:40 httphelper.go:14: Request method: POST
+2025/05/23 10:27:40 httphelper.go:28: Request headers: map[Authorization:[Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c] Content-Type:[application/json]]
+2025/05/23 10:27:40 httphelper.go:47: Request body: {{"data":{"CPU model":"Brain","Hard disk size":"24 TB","price":1849.99,"year":1292919},"name":"Johnson Aniyi Olalere"}}
+2025/05/23 10:27:41 httphelper.go:54: Response status: &{200 OK 200 HTTP/2.0 2 0 map[Alt-Svc:[h3=":443"; ma=86400] Cf-Cache-Status:[DYNAMIC] Cf-Ray:[944384e3ce5dbee4-LHR] Content-Type:[application/json] Date:[Fri, 23 May 2025 09:27:44 GMT] Nel:[{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}] Report-To:[{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=AwAJWZsTDq9i4RSbaCZIij76IEnOnxKv%2Fqk9DXTwJm68b63niPPPOAiBsB4N%2B1t8yYZrIJHKZAIzeoYv1UdqhYP8rbqAH9HV6XgVC7P0Uu06ECc%3D"}]}] Server:[cloudflare] Vary:[Origin Access-Control-Request-Method Access-Control-Request-Headers]] 0xc000683380 -1 [] false true map[] 0xc000260280 0xc0005a4240}
+2025/05/23 10:27:41 easypay.go:178: Response from EasyPay: {"id":"ff80818196f2a23f0196fc784b0f19d6","name":"Johnson Aniyi Olalere","createdAt":"2025-05-23T09:27:44.143+00:00","data":{"CPU model":"Brain","Hard disk size":"24 TB","price":1849.99,"year":1292919}}
+2025/05/23 10:27:41 transfers_usecase.go:89: Error making request to EasyPay: 
+2025/05/23 10:29:24 intialize.go:55: Logger initialized!
+2025/05/23 10:29:28 easypay.go:112: ============ EasyPay name enquiry request initiated here ==========================
+2025/05/23 10:29:28 easypay.go:49: Checking for cached EasyPay token
+2025/05/23 10:29:28 transfers_usecase.go:91: Response from EasyPay: {00  000023250523102928857446756809 1 000014 0077705137 test user 210982389230 1 Success}
+2025/05/23 10:29:33 transfers_usecase.go:29: Redis data for name enquiry {"responseCode":"00","sessionID":"","transactionId":"000023250523102928857446756809","channelCode":1,"destinationInstitutionCode":"000014","accountNumber":"0077705137","accountName":"test user","bankVerificationNumber":"210982389230","kycLevel":1,"message":"Success"}
+2025/05/23 10:29:33 transfers_usecase.go:68: ====== Debiting main transfer and calling nibbs ========== 12000
+2025/05/23 10:29:33 easypay.go:173: ============ EasyPay transfer request initiated here ==========================
+2025/05/23 10:29:33 easypay.go:49: Checking for cached EasyPay token
+2025/05/23 10:29:33 easypay.go:179: EasyPay token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+2025/05/23 10:29:33 easypay.go:208: Payload for EasyPay transfer: map[amount:120.00 beneficiaryAccountName:test user beneficiaryAccountNumber:0077705137 beneficiaryBankVerificationNumber:210982389230 beneficiaryKYCLevel:1 beneficiaryNarration: channelCode:1 destinationInstitutionCode: nameEnquiryRef: originatorAccountName:Bloc-Johnson Aniyi originatorAccountNumber:5403508663 originatorBankVerificationNumber:33333333333 originatorKYCLevel:3 originatorNarration: paymentReference:000023250523102933432722953958 sessionID:000023250523102933139657512604 transactionId:000023250523102933751771619119 transactionLocation:1.39716,3.07117]
+2025/05/23 10:29:33 easypay.go:269: Adding transfer to queue for processing: 000023250523102933139657512604
+2025/05/23 10:29:33 Queuehandler.go:25: ............enqueuing Task now....... processTransfer
+2025/05/23 10:29:55 easypay.go:300: ================= Queue processor now Processing task:============ 
+2025/05/23 10:29:55 easypay.go:435: Items in the queue: map[amount:12000 beneficiary_id:0 currency: ref_id:sess_68303ff8a6c79173c956b647 reference:ref-798699970945 sender_name:Johnson Aniyi]
+2025/05/23 10:29:55 easypay.go:304: Session id for transfer: 000023250523102933139657512604
+2025/05/23 10:29:55 easypay.go:49: Checking for cached EasyPay token
+2025/05/23 10:29:55 easypay.go:323: Error making request to EasyPay:, retry in 10 minutes, response code:  25
+2025/05/23 10:29:55 easypay.go:325: Attempt 2 for this transaction in 10 minute 25
+2025/05/23 10:29:55 easypay.go:269: Adding transfer to queue for processing: 
+2025/05/23 10:29:55 Queuehandler.go:25: ............enqueuing Task now....... processTransfer
+2025/05/23 10:30:56 easypay.go:300: ================= Queue processor now Processing task:============ 
+2025/05/23 10:30:56 easypay.go:435: Items in the queue: map[amount:12000 beneficiary_id:0 currency: ref_id:sess_68303ff8a6c79173c956b647 reference:ref-798699970945 sender_name:Johnson Aniyi]
+2025/05/23 10:30:56 easypay.go:304: Session id for transfer: 000023250523102933139657512604
+2025/05/23 10:30:56 easypay.go:49: Checking for cached EasyPay token
+2025/05/23 10:30:56 easypay.go:351: Transaction successful, update the transaction table 
+2025/05/23 10:48:14 intialize.go:55: Logger initialized!

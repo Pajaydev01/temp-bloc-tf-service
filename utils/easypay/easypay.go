@@ -230,7 +230,7 @@ func EasyPayTransfer(transferItem transferModel.TransferRequest, beneficiary tra
 			Amount:                            payload["amount"].(string),
 		}
 		//successful, add to tsq quue
-		err := addTransferToQueue(transferItem, beneficiary, transaction, "0", 20*time.Second)
+		err := addTransferToQueue(transferItem, beneficiary, transaction, "0", 20*time.Second, transferItem.SessionID)
 		if err != nil {
 			log.Println("Error adding transfer to queue:", err)
 			return transferModel.EASYPAYFtSingleResponse{}, err
@@ -257,7 +257,7 @@ func EasyPayTransfer(transferItem transferModel.TransferRequest, beneficiary tra
 	}
 	log.Println("Response from EasyPay transfer:", string(body))
 	//submit to queue runner to do tsq
-	err = addTransferToQueue(transferItem, beneficiary, transaction, "0", 20*time.Second)
+	err = addTransferToQueue(transferItem, beneficiary, transaction, "0", 20*time.Second, transferItem.SessionID)
 	if err != nil {
 		log.Println("Error adding transfer to queue:", err)
 		return transferModel.EASYPAYFtSingleResponse{}, err
@@ -265,14 +265,14 @@ func EasyPayTransfer(transferItem transferModel.TransferRequest, beneficiary tra
 	return result, nil
 }
 
-func addTransferToQueue(transferItem transferModel.TransferRequest, beneficiary transferModel.NESingleResponseEasyPay, transaction txnModel.Transactions, attempt string, duration time.Duration) error {
+func addTransferToQueue(transferItem transferModel.TransferRequest, beneficiary transferModel.NESingleResponseEasyPay, transaction txnModel.Transactions, attempt string, duration time.Duration, sessionId string) error {
 	log.Println("Adding transfer to queue for processing:", transferItem.SessionID)
 	// Create the payload
 	item := map[string]interface{}{
 		"transferItem": transferItem,
 		"beneficiary":  beneficiary,
 		"transaction":  transaction,
-		"sessionId":    transferItem.SessionID,
+		"sessionId":    sessionId,
 		"attempt":      attempt,
 	}
 
@@ -311,27 +311,25 @@ func HandleTsqQueue(ctx context.Context, task *asynq.Task) error {
 		log.Println("Error converting EASYPAY_TSQ_INTERVAL_TIME_MINUTES to integer:", err)
 		return err
 	}
-	if err != nil {
-		log.Println("Error getting queued data:", err)
-		return err
-	}
 	//do tsq
 	result, err := DoTsqEasyPayTransfer(sessionId)
 	if err != nil {
 		log.Println("Error making request to EasyPay:, retry in 10 minutes", err)
 		// Enqueue the task again with a delay
-		addTransferToQueue(transferItem, beneficiary, transaction, "0", time.Duration(interval)*time.Minute)
+		addTransferToQueue(transferItem, beneficiary, transaction, "0", time.Duration(interval)*time.Minute, sessionId)
 		return nil
 	}
 	if result.ResponseCode != "00" {
 		log.Println("Error making request to EasyPay:, retry in 10 minutes, response code: ", result.ResponseCode)
 		if attempt == "0" {
 			log.Println("Attempt 2 for this transaction in 10 minute", result.ResponseCode)
-			addTransferToQueue(transferItem, beneficiary, transaction, "1", time.Duration(interval)*time.Minute)
+			addTransferToQueue(transferItem, beneficiary, transaction, "1", time.Duration(interval)*time.Minute, sessionId)
 		} else if attempt == "1" {
 			log.Println("Attempt 3 for this transaction in 10 minute", result.ResponseCode)
-			addTransferToQueue(transferItem, beneficiary, transaction, "2", time.Duration(interval)*time.Minute)
+			addTransferToQueue(transferItem, beneficiary, transaction, "2", time.Duration(interval)*time.Minute, sessionId)
 		} else {
+			//there are certain response codes that should not be failed, just leave and submit the job to run the next day and fail it
+
 			log.Println("All attempts exhausted for this transaction, fail the transaction", transferItem.SessionID)
 			//generate metadata  and save to transaction table
 			transaction.Status = string(txnModel.TRANSACTION_STATUS_FAILED)

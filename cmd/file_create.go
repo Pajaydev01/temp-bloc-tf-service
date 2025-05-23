@@ -123,6 +123,7 @@ func capitalize(str string) string {
 	return string(str[0]-32) + str[1:]
 }
 
+// handles file creation or project initialization
 func HandleInit() {
 	if len(os.Args) < 3 {
 		fmt.Println("Usage:")

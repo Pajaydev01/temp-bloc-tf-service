@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"os"
 	"time"
 
 	"github.com/bloc-transfer-service/config/database"
@@ -80,46 +79,24 @@ func DoNameEnquiry(nameEnquiryItem transferModel.NameEnquiryRequest) (bson.M, er
 	//test
 	redisCon := database.GetRedisClient()
 	key := fmt.Sprintf("sess_%s", primitive.NewObjectID().Hex())
-	if os.Getenv("ENVIRONMENT") == "production" {
-		response, err := easypay.EasyPayNameEnquiry(nameEnquiryItem.AccountNumber, nameEnquiryItem.BankCode)
-		if err != nil {
-			log.Println("Error making request to EasyPay:", err)
-			return bson.M{}, err
-		}
-		if response.ResponseCode != "00" {
-			log.Println("Error making request to EasyPay:", response.Message)
-			return bson.M{}, fmt.Errorf("failed to authenticate: %s", response.Message)
-		}
-		log.Println("Response from EasyPay:", response)
-		//generate a key and cache the response to use for 10 minutes to the transfer to avoid re-making name enquiry for transfer
-		jsn, err := json.Marshal(response)
-		_, err = redisCon.Set(context.Background(), key, jsn, 10*time.Minute).Result()
-		if err != nil {
-			log.Println("Redis error!!!!!", err)
-			return bson.M{}, err
-		}
-		return bson.M{"account_number": response.AccountNumber, "account_name": response.AccountName, "ref_id": key}, nil
+	response, err := easypay.EasyPayNameEnquiry(nameEnquiryItem.AccountNumber, nameEnquiryItem.BankCode)
+	if err != nil {
+		log.Println("Error making request to EasyPay:", err)
+		return bson.M{}, err
 	}
-
-	item := transferModel.NESingleResponseEasyPay{
-		ResponseCode:               "00",
-		TransactionId:              key,
-		ChannelCode:                2,
-		DestinationInstitutionCode: nameEnquiryItem.BankCode,
-		AccountNumber:              nameEnquiryItem.AccountNumber,
-		AccountName:                "test user",
-		BankVerificationNumber:     "210982389230",
-		KycLevel:                   1,
-		Message:                    "Success",
+	if response.ResponseCode != "00" {
+		log.Println("Error making request to EasyPay:", response.Message)
+		return bson.M{}, fmt.Errorf("failed to authenticate: %s", response.Message)
 	}
-	jsn, err := json.Marshal(item)
+	log.Println("Response from EasyPay:", response)
+	//generate a key and cache the response to use for 10 minutes to the transfer to avoid re-making name enquiry for transfer
+	jsn, err := json.Marshal(response)
 	_, err = redisCon.Set(context.Background(), key, jsn, 10*time.Minute).Result()
 	if err != nil {
 		log.Println("Redis error!!!!!", err)
 		return bson.M{}, err
-
 	}
-	return bson.M{"account_number": "123678947", "account_name": "test user", "ref_id": key}, nil
+	return bson.M{"account_number": response.AccountNumber, "account_name": response.AccountName, "ref_id": key}, nil
 }
 
 func GetInstitution() ([]transferModel.NIPInstitutions, error) {
